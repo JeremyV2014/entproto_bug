@@ -17,7 +17,7 @@ func (User) Fields() []ent.Field {
 	return []ent.Field{
 		field.Float("age").
 			Annotations(
-				entproto.Field(2)
+				entproto.Field(2),
 			),
 	}
 }
