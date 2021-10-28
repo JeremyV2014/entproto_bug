@@ -1,7 +1,9 @@
 package schema
 
 import (
+	"entgo.io/contrib/entproto"
 	"entgo.io/ent"
+	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/field"
 )
 
@@ -13,12 +15,22 @@ type User struct {
 // Fields of the User.
 func (User) Fields() []ent.Field {
 	return []ent.Field{
-		field.Int("age"),
-		field.String("name"),
+		field.Float("age").
+			Annotations(
+				entproto.Field(2)
+			),
 	}
 }
 
 // Edges of the User.
 func (User) Edges() []ent.Edge {
 	return nil
+}
+
+// Annotations of the User.
+func (User) Annotations() []schema.Annotation {
+	return []schema.Annotation{
+		entproto.Message(),
+		entproto.Service(),
+	}
 }
